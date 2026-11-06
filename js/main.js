@@ -112,7 +112,6 @@ $(document).ready(function () {
             });
         }
     }
-    
 
     // logos slides
     // function setupPartnersMarquee($track) {
@@ -211,6 +210,44 @@ $(document).ready(function () {
 
     $('.close-menu').on('click', function () {
         $('.mobnav').removeClass('active');
+    });
+
+    // категорії
+    $('.category-sidebar__toggle').on('click', function () {
+        var $sidebar = $(this).closest('.category-sidebar');
+        var isOpen = !$sidebar.hasClass('is-open');
+
+        $sidebar.toggleClass('is-open', isOpen);
+        $(this).attr('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    $('.category-sidebar__list a').on('click', function () {
+        if (window.matchMedia('(max-width: 991.8px)').matches) {
+            $(this).closest('.category-sidebar').removeClass('is-open')
+                .find('.category-sidebar__toggle').attr('aria-expanded', 'false');
+        }
+    });
+
+    // product slider
+    var swiper = new Swiper('.product-hero__thumbs', {
+        loop: true,
+        spaceBetween: 10,
+        slidesPerView: 5,
+        freeMode: true,
+        watchSlidesProgress: true,
+        speed: 700,
+    });
+    var swiper2 = new Swiper('.product-hero__slider', {
+        loop: true,
+        spaceBetween: 10,
+        speed: 700,
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        thumbs: {
+            swiper: swiper,
+        },
     });
 
 });
