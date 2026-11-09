@@ -232,10 +232,17 @@ $(document).ready(function () {
     var swiper = new Swiper('.product-hero__thumbs', {
         loop: true,
         spaceBetween: 10,
-        slidesPerView: 5,
+        slidesPerView: 4,
         freeMode: true,
         watchSlidesProgress: true,
         speed: 700,
+        breakpoints: {
+            575: {
+                slidesPerView: 5,
+                spaceBetween: 24,
+            },
+           
+        },
     });
     var swiper2 = new Swiper('.product-hero__slider', {
         loop: true,
@@ -249,5 +256,25 @@ $(document).ready(function () {
             swiper: swiper,
         },
     });
+
+    var similarProductsSlider = document.querySelector('.similar-products__slider');
+    if (similarProductsSlider) {
+        new Swiper(similarProductsSlider, {
+            slidesPerView: 1,
+            spaceBetween: 16,
+            speed: 700,
+            watchOverflow: true,
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 24,
+                },
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 24,
+                },
+            },
+        });
+    }
 
 });
