@@ -197,7 +197,7 @@ $(document).ready(function () {
             },
         },
     });
-
+    
     // to top
     $('.totop').on('click', function () {
         $('html, body').animate({ scrollTop: 0 }, 800);
@@ -274,6 +274,14 @@ $(document).ready(function () {
                     spaceBetween: 24,
                 },
             },
+        });
+    }
+
+    if (typeof GLightbox !== 'undefined' && document.querySelector('.glightbox')) {
+        GLightbox({
+            selector: '.glightbox',
+            touchNavigation: true,
+            loop: true,
         });
     }
 
