@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <meta name="description" content="">
+    <title>Отримати комерційну пропозицію | VIP Navigator</title>
+    <meta name="description"
+        content="Запит на комерційну пропозицію з високовольтного обладнання для підстанцій. Вкажіть вимоги — надішлемо вартість і строки поставки.">
     <link rel="icon" type="image/png" href="favicon.png">
 
     <link rel="stylesheet" href="css/lib/bootstrap-grid.min.css">
@@ -26,6 +27,7 @@
                     <div class="header__nav mobnav">
                         <nav aria-label="Primary navigation">
                             <ul class="menu">
+                                <li class="menu-item"><a href="#">Послуги</a></li>
                                 <li class="menu-item menu-item-has-children">
                                     <a href="#" aria-expanded="false">Продукція</a>
                                     <div class="sub-menu mega-menu">
@@ -118,8 +120,15 @@
                                     </div>
                                 </li>
                                 <li class="menu-item"><a href="#">Проєкти</a></li>
-                                <li class="menu-item"><a href="#">Про компанію</a></li>
-                                <li class="menu-item active"><a href="#">Блог</a></li>
+                                <li class="menu-item menu-item-has-children">
+                                    <a href="about-company.html" aria-expanded="false">Про компанію</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="about-company.html">Про компанію</a></li>
+                                        <li class="menu-item"><a href="reviews-letters-of-rec.html">Відгуки та
+                                                рекомендаційні листи</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a href="#">Блог</a></li>
                                 <li class="menu-item"><a href="#">Контакти</a></li>
                             </ul>
                         </nav>
@@ -147,9 +156,14 @@
                         <ul class="header__lang">
                             <li><a href="#" class="active">UA</a></li>
                             <li><a href="#">EN</a></li>
+                            <li><a href="#">RU</a></li>
                         </ul>
-                        <button class="burger-menu">
-                            <img src="img/general/menu.svg" alt="Відкрити меню">
+                        <button class="burger-menu" type="button" aria-expanded="false" aria-label="Відкрити меню">
+                            <span class="burger-menu__icon" aria-hidden="true">
+                                <span class="burger-menu__line"></span>
+                                <span class="burger-menu__line"></span>
+                                <span class="burger-menu__line"></span>
+                            </span>
                         </button>
                     </div>
                 </div>
@@ -171,12 +185,12 @@
                             </li>
                         </ol>
                     </nav>
-                    <div class="category-head__intro article-head">
+                    <div class="category-head__intro">
                         <h1>
                             Отримати комерційну пропозицію
                         </h1>
                         <p>
-                            Опишіть, яке обладнання вам потрібно, — підготуємо пропозицію з вартістю<br> та строками
+                            Опишіть, яке обладнання вам потрібно, — підготуємо пропозицію з вартістю та строками
                             поставки з урахуванням ваших технічних вимог.
                         </p>
                     </div>
@@ -212,7 +226,8 @@
                                         <a href="tel:+380633605662" class="gaq-cta__tel">+38 063 360 56 62</a>
                                     </li>
                                     <li>
-                                        <a href="mailto:info@vipnav.com.ua" class="gaq-cta__email">info@vipnav.com.ua</a>
+                                        <a href="mailto:info@vipnav.com.ua"
+                                            class="gaq-cta__email">info@vipnav.com.ua</a>
                                     </li>
                                 </ul>
                                 <div class="gaq-cta__btns">
@@ -224,81 +239,83 @@
                         <div class="col-lg-8">
                             <div class="gaq-formwrap">
                                 <div class="gaq-form">
-                                    <form action="">
+                                    <form class="leave-review-form" action="#" method="post"
+                                        enctype="multipart/form-data">
                                         <div class="row leave-review-form__row">
                                             <div class="col-md-6">
                                                 <div class="leave-review-form__group">
-                                                    <label for="review-name">Імʼя *</label>
-                                                    <input type="text" id="review-name" name="name" required="">
+                                                    <label for="gaq-name">Імʼя *</label>
+                                                    <input type="text" id="gaq-name" name="name" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="leave-review-form__group">
-                                                    <label for="review-company">Телефон *</label>
-                                                    <input type="text" id="review-company" name="company">
+                                                    <label for="gaq-phone">Телефон *</label>
+                                                    <input type="tel" id="gaq-phone" name="phone" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="leave-review-form__group">
-                                                    <label for="review-email">E-mail *</label>
-                                                    <input type="email" id="review-email" name="email" required="">
+                                                    <label for="gaq-email">E-mail *</label>
+                                                    <input type="email" id="gaq-email" name="email" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="leave-review-form__group">
-                                                    <label for="review-project">Компанія</label>
-                                                    <input type="text" id="review-project" name="project" placeholder="Наприклад, ДТК Сміла">
+                                                    <label for="gaq-company">Компанія</label>
+                                                    <input type="text" id="gaq-company" name="company">
                                                 </div>
                                             </div>
-                                            <div class="col-12">
-                                                <div class="leave-review-form__group">
-                                                    <label for="review-project">Категорія обладнання</label>
-                                                    <select name="" id="category-equipment">
-                                                        <option value="">Виберіть категорію</option>
-                                                        <option value="">Компенсація реактивної потужності ВН/СН</option>
-                                                        <option value="">Трансформатори</option>
-                                                        <option value="">Вимикачі</option>
-                                                        <option value="">Високовольтні роз’єднувачі</option>
-                                                        <option value="">Високовольтні вводи</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="leave-review-form__group">
-                                                    <label for="review-project">Прикріпити файл (опитувальний лист, технічне завдання)</label>
-                                                    <input type="file" >
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="leave-review-form__group">
-                                                    <label for="review-project">Як з вами зв’язатися</label>
-                                                    <div class="radiobtns">
-                                                        <label class="radio-btn">
-                                                            <input type="radio" name="contact-method" value="phone">
-                                                            <span>Телефон</span>
-                                                        </label>
-                                                        <label class="radio-btn">
-                                                            <input type="radio" name="contact-method" value="email">
-                                                            <span>Viber</span>
-                                                        </label>
-                                                        <label class="radio-btn">
-                                                            <input type="radio" name="contact-method" value="email">
-                                                            <span>Telegram</span>
-                                                        </label>
-                                                        <label class="radio-btn">
-                                                            <input type="radio" name="contact-method" value="email">
-                                                            <span>E-mail</span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="green-btn leave-review-form__submit">Надіслати
-                                                відгук</button>
-                                                <p class="leave-review-form__privacy">
-                                                    Надсилаючи форму, ви погоджуєтесь з <a href="#">політикою
-                                                        конфіденційності</a>.
-                                                </p>
                                         </div>
+                                        <div class="leave-review-form__group">
+                                            <label for="gaq-category">Категорія обладнання</label>
+                                            <select id="gaq-category" name="category">
+                                                <option value="">Оберіть категорію</option>
+                                                <option value="compensation">Компенсація реактивної потужності ВН/СН
+                                                </option>
+                                                <option value="transformers">Трансформатори</option>
+                                                <option value="switches">Вимикачі</option>
+                                                <option value="disconnectors">Високовольтні роз’єднувачі</option>
+                                                <option value="bushings">Високовольтні вводи</option>
+                                            </select>
+                                        </div>
+                                        <div class="leave-review-form__group">
+                                            <label for="gaq-message">Опис потреби</label>
+                                            <textarea id="gaq-message" name="message"
+                                                placeholder="Технічні характеристики, кількість, бажані строки поставки"></textarea>
+                                        </div>
+                                        <div class="leave-review-form__group">
+                                            <label for="gaq-file">Прикріпити файл (опитувальний лист, технічне
+                                                завдання)</label>
+                                            <input type="file" id="gaq-file" name="attachment">
+                                        </div>
+                                        <fieldset class="leave-review-form__fieldset">
+                                            <legend>Як з вами зв’язатися</legend>
+                                            <div class="radiobtns">
+                                                <label class="radio-btn">
+                                                    <input type="radio" name="contact-method" value="phone" checked>
+                                                    <span>Телефон</span>
+                                                </label>
+                                                <label class="radio-btn">
+                                                    <input type="radio" name="contact-method" value="viber">
+                                                    <span>Viber</span>
+                                                </label>
+                                                <label class="radio-btn">
+                                                    <input type="radio" name="contact-method" value="telegram">
+                                                    <span>Telegram</span>
+                                                </label>
+                                                <label class="radio-btn">
+                                                    <input type="radio" name="contact-method" value="email">
+                                                    <span>E-mail</span>
+                                                </label>
+                                            </div>
+                                        </fieldset>
+                                        <button type="submit" class="green-btn leave-review-form__submit">Надіслати
+                                            запит</button>
+                                        <p class="leave-review-form__privacy">
+                                            Надсилаючи форму, ви погоджуєтесь з <a href="#">політикою
+                                                конфіденційності</a>.
+                                        </p>
                                     </form>
                                 </div>
                             </div>

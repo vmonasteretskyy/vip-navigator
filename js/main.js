@@ -13,6 +13,11 @@ $(document).ready(function () {
         $('.menu-item-has-children').removeClass('is-open').children('a').attr('aria-expanded', 'false');
     }
 
+    function closeMobnav() {
+        $('.mobnav').removeClass('active');
+        $('.burger-menu').attr('aria-expanded', 'false').attr('aria-label', 'Відкрити меню');
+    }
+
     $('.menu-item-has-children > a').on('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
@@ -32,11 +37,21 @@ $(document).ready(function () {
         if (!$(e.target).closest('.menu-item-has-children').length) {
             closeMegaMenus();
         }
+
+        if (
+            $('.mobnav').hasClass('active') &&
+            window.matchMedia('(max-width: 1199.8px)').matches &&
+            !$(e.target).closest('.mobnav').length &&
+            !$(e.target).closest('header.header').length
+        ) {
+            closeMobnav();
+        }
     });
 
     $(document).on('keydown', function (e) {
         if (e.key === 'Escape') {
             closeMegaMenus();
+            closeMobnav();
         }
     });
 
@@ -205,11 +220,16 @@ $(document).ready(function () {
 
     // burger menu
     $('.burger-menu').on('click', function () {
-        $('.mobnav').toggleClass('active');
+        var $mobnav = $('.mobnav');
+        var isOpen = !$mobnav.hasClass('active');
+
+        $mobnav.toggleClass('active', isOpen);
+        $(this).attr('aria-expanded', isOpen ? 'true' : 'false');
+        $(this).attr('aria-label', isOpen ? 'Закрити меню' : 'Відкрити меню');
     });
 
     $('.close-menu').on('click', function () {
-        $('.mobnav').removeClass('active');
+        closeMobnav();
     });
 
     // категорії
@@ -282,6 +302,199 @@ $(document).ready(function () {
             selector: '.glightbox',
             touchNavigation: true,
             loop: true,
+        });
+    }
+
+    // article table of contents
+    var $articleToc = $('.article-toc');
+    if ($articleToc.length) {
+        var tocScrollOffset = 120;
+        var tocReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var tocScrollDuration = tocReducedMotion ? 0 : 450;
+        var usedTocIds = {};
+
+        function getTocId($heading) {
+            var existing = $heading.attr('id');
+            if (existing) {
+                usedTocIds[existing] = true;
+                return existing;
+            }
+
+            var base =
+                'toc-' +
+                $heading
+                    .text()
+                    .trim()
+                    .toLowerCase()
+                    .replace(/[^\w\u0400-\u04FF-]+/g, '-')
+                    .replace(/^-+|-+$/g, '')
+                    .slice(0, 72);
+
+            if (!base || base === 'toc-') {
+                base = 'toc-section';
+            }
+
+            var id = base;
+            var index = 2;
+            while (usedTocIds[id] || document.getElementById(id)) {
+                id = base + '-' + index;
+                index += 1;
+            }
+
+            usedTocIds[id] = true;
+            $heading.attr('id', id);
+            return id;
+        }
+
+        $articleToc.each(function () {
+            var $toc = $(this);
+            var $article = $toc.closest('article');
+            var $content = $article.find('.entry-content').first();
+            var $list = $toc.find('.article-toc__list');
+            var $headings = $content.find('h2, h3');
+
+            if (!$content.length || !$content.children().length) {
+                $toc.closest('.col-lg-4').remove();
+                return;
+            }
+
+            var introId = 'toc-intro';
+            if (!$content.attr('id')) {
+                $content.attr('id', introId);
+            } else {
+                introId = $content.attr('id');
+            }
+            usedTocIds[introId] = true;
+
+            var introLabel = $toc.data('tocIntroLabel') || $toc.attr('data-toc-intro-label');
+            if (introLabel) {
+                $list.append(
+                    $('<li/>', { class: 'article-toc__item' }).append(
+                        $('<a/>', {
+                            class: 'article-toc__link is-active',
+                            href: '#' + introId,
+                            text: introLabel,
+                        })
+                    )
+                );
+            }
+
+            $headings.each(function () {
+                var $heading = $(this);
+                var id = getTocId($heading);
+                var tag = $heading.prop('tagName').toLowerCase();
+                var $item = $('<li/>', {
+                    class: 'article-toc__item' + (tag === 'h3' ? ' article-toc__item--h3' : ''),
+                });
+                var $link = $('<a/>', {
+                    class: 'article-toc__link',
+                    href: '#' + id,
+                    text: $heading.text().trim(),
+                });
+
+                $item.append($link);
+                $list.append($item);
+            });
+
+            $toc.removeAttr('hidden');
+
+            $toc.on('click', '.article-toc__link', function (e) {
+                e.preventDefault();
+                var hash = this.getAttribute('href');
+                var $target = $(hash);
+                if (!$target.length) {
+                    return;
+                }
+
+                var top = $target.offset().top - tocScrollOffset;
+                $('html, body').stop().animate({ scrollTop: top }, tocScrollDuration, function () {
+                    if (history.replaceState) {
+                        history.replaceState(null, '', hash);
+                    } else {
+                        window.location.hash = hash;
+                    }
+                });
+
+                $toc.find('.article-toc__link').removeClass('is-active');
+                $(this).addClass('is-active');
+            });
+
+            var $tocLinks = $toc.find('.article-toc__link');
+            var headingElements = $headings.get();
+
+            function setActiveTocFromScroll() {
+                var scrollY = $(window).scrollTop() + tocScrollOffset + 8;
+
+                $tocLinks.removeClass('is-active');
+
+                var introLinkCount = introLabel ? 1 : 0;
+
+                if (!headingElements.length) {
+                    if (introLinkCount) {
+                        $tocLinks.eq(0).addClass('is-active');
+                    }
+                    return;
+                }
+
+                var firstHeadingTop = $(headingElements[0]).offset().top;
+                if (introLinkCount && scrollY < firstHeadingTop) {
+                    $tocLinks.eq(0).addClass('is-active');
+                    return;
+                }
+
+                var activeIndex = -1;
+                for (var i = headingElements.length - 1; i >= 0; i -= 1) {
+                    if ($(headingElements[i]).offset().top <= scrollY) {
+                        activeIndex = i;
+                        break;
+                    }
+                }
+
+                if (activeIndex >= 0) {
+                    $tocLinks.eq(activeIndex + introLinkCount).addClass('is-active');
+                }
+            }
+
+            setActiveTocFromScroll();
+            $(window).on('scroll.toc load.toc', setActiveTocFromScroll);
+        });
+    }
+
+    // faq
+    var $faqAnswers = $('.faq__answer');
+    if ($faqAnswers.length) {
+        var faqSlideMs = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 300;
+
+        function closeFaqItem($item) {
+            if (!$item.hasClass('is-open')) {
+                return;
+            }
+
+            $item.find('.faq__answer').slideUp(faqSlideMs, function () {
+                $(this).attr('hidden', 'hidden');
+            });
+            $item.removeClass('is-open');
+            $item.find('.faq__summary').attr('aria-expanded', 'false');
+        }
+
+        $faqAnswers.hide().attr('hidden', 'hidden');
+        $('.faq__item').removeClass('is-open');
+
+        $('.faq__summary').on('click', function () {
+            var $item = $(this).closest('.faq__item');
+            var $answer = $item.find('.faq__answer');
+            var isOpen = $item.hasClass('is-open');
+
+            if (isOpen) {
+                closeFaqItem($item);
+            } else {
+                $('.faq__item.is-open').each(function () {
+                    closeFaqItem($(this));
+                });
+                $answer.removeAttr('hidden').hide().slideDown(faqSlideMs);
+                $item.addClass('is-open');
+                $(this).attr('aria-expanded', 'true');
+            }
         });
     }
 

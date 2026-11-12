@@ -8,7 +8,7 @@
     <title>Каталог високовольтного обладнання VIP Navigator для підстанцій</title>
     <meta name="description"
         content="Каталог високовольтного обладнання для підстанцій і електромереж. Оберіть категорію або надішліть запит — підберемо рішення за вашими характеристиками.">
-        <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
 
     <link rel="stylesheet" href="css/lib/bootstrap-grid.min.css">
     <link rel="stylesheet" href="css/lib/swiper.css">
@@ -26,7 +26,8 @@
                     <div class="header__nav mobnav">
                         <nav aria-label="Primary navigation">
                             <ul class="menu">
-                                <li class="menu-item menu-item-has-children active">
+                                <li class="menu-item"><a href="#">Послуги</a></li>
+                                <li class="menu-item menu-item-has-children">
                                     <a href="#" aria-expanded="false">Продукція</a>
                                     <div class="sub-menu mega-menu">
                                         <div class="container">
@@ -118,7 +119,14 @@
                                     </div>
                                 </li>
                                 <li class="menu-item"><a href="#">Проєкти</a></li>
-                                <li class="menu-item"><a href="#">Про компанію</a></li>
+                                <li class="menu-item menu-item-has-children">
+                                    <a href="about-company.html" aria-expanded="false">Про компанію</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="about-company.html">Про компанію</a></li>
+                                        <li class="menu-item"><a href="reviews-letters-of-rec.html">Відгуки та
+                                                рекомендаційні листи</a></li>
+                                    </ul>
+                                </li>
                                 <li class="menu-item"><a href="#">Блог</a></li>
                                 <li class="menu-item"><a href="#">Контакти</a></li>
                             </ul>
@@ -147,9 +155,14 @@
                         <ul class="header__lang">
                             <li><a href="#" class="active">UA</a></li>
                             <li><a href="#">EN</a></li>
+                            <li><a href="#">RU</a></li>
                         </ul>
-                        <button class="burger-menu">
-                            <img src="img/general/menu.svg" alt="Відкрити меню">
+                        <button class="burger-menu" type="button" aria-expanded="false" aria-label="Відкрити меню">
+                            <span class="burger-menu__icon" aria-hidden="true">
+                                <span class="burger-menu__line"></span>
+                                <span class="burger-menu__line"></span>
+                                <span class="burger-menu__line"></span>
+                            </span>
                         </button>
                     </div>
                 </div>
@@ -199,9 +212,21 @@
                                 <div class="category-sidebar__panel" id="category-sidebar-panel">
                                     <ul class="category-sidebar__list">
                                         <li><a href="#">Компенсація реактивної потужності ВН/СН</a></li>
-                                        <li><a href="#">Трансформатори</a></li>
+                                        <li>
+                                            <a href="#">Трансформатори</a>
+                                            <ul>
+                                                <li><a href="#">Вимірювальні трансформатори</a></li>
+                                                <li><a href="#">Силові трансформатори</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="#">Мобільна трансформаторна підстанція</a></li>
-                                        <li><a href="#" class="active">Вимикачі</a></li>
+                                        <li>
+                                            <a href="#" class="active">Вимикачі</a>
+                                            <ul>
+                                                <li><a href="#">Вакуумні вимикачі</a></li>
+                                                <li><a href="#">Елегазові вимикачі</a></li>
+                                            </ul>
+                                        </li>
                                         <li><a href="#">Високовольтні роз’єднувачі</a></li>
                                         <li><a href="#">Високовольтні вводи</a></li>
                                         <li><a href="#">Шинні опори та жорстке ошинування</a></li>
@@ -259,7 +284,6 @@
                                                     </dl>
                                                 </div>
                                                 <div class="scategory-item-bottom">
-                                                    <a href="#" class="scategory-item-more">Детальніше →</a>
                                                     <a href="#" class="scategory-btn">Заявка</a>
                                                 </div>
                                             </div>
@@ -289,7 +313,6 @@
                                                     </dl>
                                                 </div>
                                                 <div class="scategory-item-bottom">
-                                                    <a href="#" class="scategory-item-more">Детальніше →</a>
                                                     <a href="#" class="scategory-btn">Заявка</a>
                                                 </div>
                                             </div>
@@ -319,7 +342,6 @@
                                                     </dl>
                                                 </div>
                                                 <div class="scategory-item-bottom">
-                                                    <a href="#" class="scategory-item-more">Детальніше →</a>
                                                     <a href="#" class="scategory-btn">Заявка</a>
                                                 </div>
                                             </div>
@@ -365,7 +387,6 @@
                                                     </dl>
                                                 </div>
                                                 <div class="scategory-item-bottom">
-                                                    <a href="#" class="scategory-item-more">Детальніше →</a>
                                                     <a href="#" class="scategory-btn">Заявка</a>
                                                 </div>
                                             </div>
@@ -373,6 +394,175 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="category-projects">
+                <div class="container">
+                    <h2 class="titleh3">
+                        Проєкти з цим обладнанням
+                    </h2>
+                    <div class="row category-projects__row">
+                        <div class="col-xl-4 col-md-6">
+                            <div class="projects-card projects-card--has-more">
+                                <span class="projects-card__media">
+                                    <img src="img/projects/pr2.jpg" width="794" height="446"
+                                        alt="Проєкт Обл Енерго Боярка">
+                                </span>
+                                <span class="projects-card__title">Обл Енерго Боярка</span>
+                                <span class="projects-card-more">
+                                    <span class="projects-card-more__content">
+                                        <span class="projects-card-more__text">
+                                            Поставка та введення в експлуатацію високовольтного обладнання для
+                                            підстанції регіонального оператора.
+                                           
+                                        </span>
+                                    </span>
+                                    <a href="project.html" class="projects-card-more__btn">Детальніше</a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-md-6">
+                            <div class="projects-card projects-card--has-more">
+                                <span class="projects-card__media">
+                                    <img src="img/projects/pr3.jpg" width="794" height="446"
+                                        alt="Проєкт Укрзалізниця — високовольтне обладнання">
+                                </span>
+                                <span class="projects-card__title">Укрзалізниця</span>
+                                <span class="projects-card-more">
+                                    <span class="projects-card-more__content">
+                                        <img src="img/category/uz-logo.png" alt="">
+                                        <span class="projects-card-more__text">
+                                            Забезпечення надійної роботи залізничної інфраструктури завдяки сучасному
+                                            електротехнічному обладнанню.
+                                        </span>
+                                    </span>
+                                    <a href="project.html" class="projects-card-more__btn">Детальніше</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq">
+                <div class="container">
+                    <div class="faq__inner">
+                        <h2 class="faq__title">Часті питання</h2>
+                        <div class="faq__list">
+                            <div class="faq__item">
+                                <button type="button" class="faq__summary" aria-expanded="false"
+                                    aria-controls="faq-answer-1" id="faq-question-1">
+                                    <span class="faq__summary-text">Для чого призначені високовольтні вимикачі?</span>
+                                    <span class="faq__icon" aria-hidden="true"></span>
+                                </button>
+                                <div class="faq__answer" id="faq-answer-1" role="region"
+                                    aria-labelledby="faq-question-1" hidden>
+                                    <p>Високовольтні вимикачі призначені для комутації електричних кіл, увімкнення та
+                                        вимкнення електрообладнання, а також відключення аварійних ділянок мережі. Вони
+                                        забезпечують захист і стабільну роботу електричних підстанцій та енергетичних
+                                        систем.</p>
+                                </div>
+                            </div>
+                            <div class="faq__item">
+                                <button type="button" class="faq__summary" aria-expanded="false"
+                                    aria-controls="faq-answer-2" id="faq-question-2">
+                                    <span class="faq__summary-text">Чим відрізняється вакуумний вимикач від
+                                        елегазового?</span>
+                                    <span class="faq__icon" aria-hidden="true"></span>
+                                </button>
+                                <div class="faq__answer" id="faq-answer-2" role="region"
+                                    aria-labelledby="faq-question-2" hidden>
+                                    <p>Основна відмінність полягає в середовищі гасіння електричної дуги. У вакуумних
+                                        вимикачах використовується вакуум, а в елегазових — газ SF<sub>6</sub>.
+                                        Вакуумні моделі широко застосовуються в мережах середньої напруги, тоді як
+                                        елегазові використовуються також у високовольтних електроустановках.</p>
+                                </div>
+                            </div>
+                            <div class="faq__item">
+                                <button type="button" class="faq__summary" aria-expanded="false"
+                                    aria-controls="faq-answer-3" id="faq-question-3">
+                                    <span class="faq__summary-text">Де застосовуються вакуумні вимикачі?</span>
+                                    <span class="faq__icon" aria-hidden="true"></span>
+                                </button>
+                                <div class="faq__answer" id="faq-answer-3" role="region"
+                                    aria-labelledby="faq-question-3" hidden>
+                                    <p>Вакуумні вимикачі використовуються на трансформаторних підстанціях, у
+                                        розподільчих пристроях, промислових електроустановках та електричних мережах
+                                        середньої напруги.</p>
+                                </div>
+                            </div>
+                            <div class="faq__item">
+                                <button type="button" class="faq__summary" aria-expanded="false"
+                                    aria-controls="faq-answer-4" id="faq-question-4">
+                                    <span class="faq__summary-text">
+                                        Для яких об'єктів підходять елегазові вимикачі?
+                                    </span>
+                                    <span class="faq__icon" aria-hidden="true"></span>
+                                </button>
+                                <div class="faq__answer" id="faq-answer-4" role="region"
+                                    aria-labelledby="faq-question-4" hidden>
+                                    <p>
+                                        Елегазові вимикачі застосовуються на високовольтних підстанціях, у магістральних
+                                        електричних мережах, на енергетичних підприємствах та інших об'єктах, де
+                                        потрібна надійна комутація електричних кіл високої напруги.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="faq__item">
+                                <button type="button" class="faq__summary" aria-expanded="false"
+                                    aria-controls="faq-answer-5" id="faq-question-5">
+                                    <span class="faq__summary-text">
+                                        На які характеристики звертати увагу під час вибору вимикача?
+                                    </span>
+                                    <span class="faq__icon" aria-hidden="true"></span>
+                                </button>
+                                <div class="faq__answer" id="faq-answer-5" role="region"
+                                    aria-labelledby="faq-question-5" hidden>
+                                    <p>
+                                        Під час вибору необхідно враховувати номінальну напругу, номінальний струм,
+                                        струм вимкнення, частоту мережі, тип ізоляції, умови експлуатації та вимоги
+                                        проєктної документації.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="faq__item">
+                                <button type="button" class="faq__summary" aria-expanded="false"
+                                    aria-controls="faq-answer-6" id="faq-question-6">
+                                    <span class="faq__summary-text">
+                                        Чи можна підібрати вимикач за технічним завданням?
+                                    </span>
+                                    <span class="faq__icon" aria-hidden="true"></span>
+                                </button>
+                                <div class="faq__answer" id="faq-answer-6" role="region"
+                                    aria-labelledby="faq-question-6" hidden>
+                                    <p>
+                                        Так. Фахівці В.І.П.-НАВІГАТОР допоможуть підібрати обладнання відповідно до
+                                        технічних характеристик електроустановки, параметрів мережі та вимог конкретного
+                                        проєкту.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="faq__item">
+                                <button type="button" class="faq__summary" aria-expanded="false"
+                                    aria-controls="faq-answer-7" id="faq-question-7">
+                                    <span class="faq__summary-text">
+                                        Як отримати консультацію щодо постачання високовольтного вимикача?
+                                    </span>
+                                    <span class="faq__icon" aria-hidden="true"></span>
+                                </button>
+                                <div class="faq__answer" id="faq-answer-7" role="region"
+                                    aria-labelledby="faq-question-7" hidden>
+                                    <p>
+                                        Щоб отримати консультацію, залиште заявку на сайті або зв'яжіться з нашими
+                                        менеджерами за телефоном +38 063 360 56 62. Для точнішого підбору рекомендуємо
+                                        надати технічне завдання або основні параметри необхідного обладнання.
+                                    </p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -408,6 +598,92 @@
                 </div>
             </section>
 
+            <section class="seosect">
+                <div class="container">
+                    <div class="seosect__content">
+                        <h2>
+                            VIP Navigator — постачальник високовольтного обладнання для підстанцій та електромереж
+                        </h2>
+                        <p>
+                            VIP Navigator — постачальник високовольтного обладнання та комплексних рішень для
+                            енергетичної
+                            галузі, промисловості й інфраструктурних об'єктів України. Компанія пропонує обладнання для
+                            електричних підстанцій, розподільчих мереж та енергетичних систем від провідних світових
+                            виробників.
+                        </p>
+                        <p>
+                            Ми допомагаємо підібрати обладнання відповідно до технічних вимог проєкту, забезпечуємо
+                            консультаційну підтримку та супроводжуємо замовників на етапах вибору й постачання
+                            продукції.
+                        </p>
+                        <h3>Високовольтне обладнання для енергетичних об'єктів</h3>
+                        <p>
+                            У каталозі VIP Navigator представлений широкий асортимент електротехнічного обладнання для
+                            будівництва, модернізації та реконструкції підстанцій і електромереж.
+                        </p>
+                        <ul>
+                            <li>
+                                [Трансформатори] — вимірювальні та силові трансформатори, сухі трансформатори й мобільні
+                                трансформаторні підстанції.
+                            </li>
+                            <li>
+                                [Вимикачі] — вакуумні та елегазові вимикачі різних класів напруги.
+                            </li>
+                            <li>
+                                [Розподільчі пристрої] — елегазові КРУЕ та гібридні розподільчі пристрої.
+                            </li>
+                            <li>
+                                [Високовольтні роз'єднувачі] — обладнання для комутації та ізоляції ділянок електричних
+                                мереж.
+                            </li>
+                            <li>
+                                [Високовольтні вводи] — компоненти для силового електрообладнання.
+                            </li>
+                            <li>
+                                [Ізолятори та обмежувачі перенапруги] — обладнання для ізоляції та захисту електричних
+                                мереж.
+                            </li>
+                            <li>
+                                [Конденсатори та батареї статичних конденсаторів] — рішення для компенсації реактивної
+                                потужності.
+                            </li>
+                            <li>
+                                [Високовольтні кабелі та кабельні муфти] — компоненти для побудови й підключення
+                                електричних
+                                мереж.
+                            </li>
+                        </ul>
+                        <h3>Обладнання від провідних світових виробників</h3>
+                        <p>
+                            VIP Navigator співпрацює з міжнародними виробниками електротехнічного обладнання та пропонує
+                            рішення для різних технічних завдань. У каталозі можна ознайомитися з продукцією виробників,
+                            її
+                            характеристиками, технічною документацією та доступними виконаннями.
+                        </p>
+                        <p>
+                            Ми допомагаємо порівняти технічні параметри, визначити оптимальну комплектацію та підібрати
+                            обладнання відповідно до специфіки об'єкта.
+                        </p>
+                        <h3>Комплексна підтримка та технічний супровід</h3>
+                        <p>
+                            Окрім постачання обладнання, VIP Navigator пропонує спеціалізовані послуги для енергетичних
+                            підприємств та промислових замовників. Серед них — шеф-інжиніринг і тестування ізоляції під
+                            напругою із застосуванням обладнання Positron.
+                        </p>
+                        <p>
+                            Наш підхід передбачає увагу до технічних вимог, особливостей експлуатації та завдань кожного
+                            проєкту.
+                        </p>
+                        <h3>Потрібне високовольтне обладнання для вашого проєкту?</h3>
+                        <p>
+                            Зверніться до фахівців VIP Navigator, щоб отримати консультацію, підібрати необхідне
+                            електрообладнання та запросити комерційну пропозицію. Допоможемо визначити відповідні
+                            рішення з
+                            урахуванням технічних характеристик, умов постачання та потреб вашого об'єкта.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
 
         </main>
