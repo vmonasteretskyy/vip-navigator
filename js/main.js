@@ -497,5 +497,4 @@ $(document).ready(function () {
             }
         });
     }
-
 });
